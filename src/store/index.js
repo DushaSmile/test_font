@@ -13,10 +13,14 @@ const sagaMiddleware = createSagaMiddleware();
 
 // dev tools middleware
 const reduxDevTools = window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__();
+import devToolsEnhancer, { composeWithDevTools } from 'remote-redux-devtools';
 
 const store = createStore(
     rootReducer,
-    compose(applyMiddleware(sagaMiddleware), reduxDevTools)
+    compose(
+        applyMiddleware(sagaMiddleware),
+        reduxDevTools
+    )
 );
 
 

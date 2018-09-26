@@ -1,12 +1,13 @@
-// React & Redux
+// React & Redux & Router-Link
 import React from 'react';
 import { connect } from 'react-redux';
+import { Link } from 'react-router-dom';
 
 // Components
-import Table from '../components/Table/Table';
+import Table from '../components/RequestsContainer/Table/Table';
 
 // Actions
-import { requestData } from "../actions/requestData";
+import { getRequests } from "../actions/getRequestsActions";
 
 class RequestsContainer extends React.Component {
 
@@ -23,7 +24,7 @@ class RequestsContainer extends React.Component {
         return(
             <div className="container">
                 <h1>Requests</h1>
-                <button type="button" className="btn btn-success" >Add new</button>
+                <Link to="/add" className="btn btn-success btn-lg">Add new</Link>
                 <Table requests={this.props.requests} />
             </div>
         )
@@ -34,11 +35,11 @@ class RequestsContainer extends React.Component {
 // map Redux state to a prop
 const mapStateToProps = state => ({requests: state.requests});
 
-// map requestData action creator to a getRequest prop
+// map getRequests action creator to a getRequest prop
 const mapDispatchToProps = dispatch => {
     return {
         getRequests: url => {
-            dispatch(requestData(url))
+            dispatch(getRequests(url))
         }
     }
 };

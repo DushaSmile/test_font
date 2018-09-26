@@ -1,8 +1,8 @@
 import { combineReducers } from 'redux';
 import requestsReducer from './requestsReducer';
+import { reducer as formReducer } from 'redux-form';
 
-const rootReducer = combineReducers({
-    requests: requestsReducer
+export default combineReducers({
+    requests: requestsReducer,
+    form: formReducer
 });
-
-export default rootReducer;

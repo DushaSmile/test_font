@@ -1,15 +1,14 @@
 import * as types from './types';
 
 // Begin AJAX request action
-export const requestData = url => {
+export const getRequests = () => {
     return {
-        type: types.API_CALL_BEGIN,
-        url: url
+        type: types.API_CALL_BEGIN
     }
 };
 
 // AJAX success action
-export const requestDataSuccess = response => {
+export const getRequestsSuccess = response => {
     return {
         type: types.API_CALL_SUCCESSFUL,
         response: response
@@ -17,7 +16,7 @@ export const requestDataSuccess = response => {
 };
 
 // AJAX failure action
-export const requestDataFailed = error => {
+export const getRequestFailed = error => {
     return {
         type: types.API_CALL_FAILURE,
         error: error
