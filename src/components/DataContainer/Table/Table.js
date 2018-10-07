@@ -11,8 +11,8 @@ const Table = ({requests}) => {
         <table className="table">
             <TableHeader />
             <tbody>
-                {/*Loop through requests and pass each into TableRow*/}
-                {Object.values(requests).map(request => <TableRow key={request.id} row={request} />)}
+                {/*Loop through data and pass each into TableRow*/}
+                {requests.data && requests.data.map(request => <TableRow key={request.id} row={request}/>)}
             </tbody>
         </table>
     )

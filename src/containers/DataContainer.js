@@ -4,12 +4,12 @@ import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 
 // Components
-import Table from '../components/RequestsContainer/Table/Table';
+import Table from '../components/DataContainer/Table/Table';
 
 // Actions
-import { getRequests } from "../actions/getRequestsActions";
+import { getData } from "../actions/getDataActions";
 
-class RequestsContainer extends React.Component {
+class DataContainer extends React.Component {
 
     constructor(props) {
         super(props);
@@ -17,7 +17,7 @@ class RequestsContainer extends React.Component {
 
     componentDidMount() {
         const api = 'http://localhost:3000/requests';
-        this.props.getRequests(api);
+        this.props.getData(api);
     }
 
     render() {
@@ -25,7 +25,7 @@ class RequestsContainer extends React.Component {
             <div className="container">
                 <h1>Requests</h1>
                 <Link to="/add" className="btn btn-success btn-lg">Add new</Link>
-                <Table requests={this.props.requests} />
+                <Table requests={this.props.data} />
             </div>
         )
     }
@@ -33,16 +33,16 @@ class RequestsContainer extends React.Component {
 }
 
 // map Redux state to a prop
-const mapStateToProps = state => ({requests: state.requests});
+const mapStateToProps = state => ({data: state.data});
 
-// map getRequests action creator to a getRequest prop
+// map getData action creator to a getRequest prop
 const mapDispatchToProps = dispatch => {
     return {
-        getRequests: url => {
-            dispatch(getRequests(url))
+        getData: url => {
+            dispatch(getData(url))
         }
     }
 };
 
 
-export default connect(mapStateToProps, mapDispatchToProps)(RequestsContainer);
+export default connect(mapStateToProps, mapDispatchToProps)(DataContainer);
